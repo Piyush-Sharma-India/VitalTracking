@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "G:\\Piyush\\Cardinal Health\\VitalTracking\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\vital_item.xml",
+        "source": "G:\\Piyush\\Cardinal Health\\VitalTracking\\app\\src\\main\\res\\layout\\vital_item.xml"
+    },
+    {
+        "merged": "G:\\Piyush\\Cardinal Health\\VitalTracking\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\vital_detail_item.xml",
+        "source": "G:\\Piyush\\Cardinal Health\\VitalTracking\\app\\src\\main\\res\\layout\\vital_detail_item.xml"
+    },
+    {
+        "merged": "G:\\Piyush\\Cardinal Health\\VitalTracking\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\vital_list_fragment.xml",
+        "source": "G:\\Piyush\\Cardinal Health\\VitalTracking\\app\\src\\main\\res\\layout\\vital_list_fragment.xml"
+    }
+]

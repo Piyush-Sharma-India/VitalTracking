@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Vital Tracking</string>
+    <string name="vital_list">Vital List</string>
+    <string name="vital_details">Vital Details</string>
+    <string name="no_vitals_available">No Vitals Available</string>
+</resources>
