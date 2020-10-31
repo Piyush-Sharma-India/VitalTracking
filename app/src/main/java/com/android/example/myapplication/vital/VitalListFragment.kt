@@ -2,18 +2,15 @@ package com.android.example.myapplication.vital
 
 import android.content.Context
 import android.os.Bundle
-import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.android.example.myapplication.VitalTrackingApplication
-import com.android.example.myapplication.vital.adapter.VitalListAdapter
 import com.android.example.myapplication.databinding.VitalListFragmentBinding
+import com.android.example.myapplication.vital.adapter.VitalListAdapter
 import javax.inject.Inject
 
 class VitalListFragment : Fragment() {

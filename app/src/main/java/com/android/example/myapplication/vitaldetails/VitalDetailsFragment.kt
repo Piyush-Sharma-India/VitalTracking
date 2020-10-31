@@ -10,7 +10,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.android.example.myapplication.R
-import com.android.example.myapplication.VitalTrackingApplication
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.XAxis.XAxisPosition
@@ -51,11 +50,11 @@ class VitalDetailsFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         severityBarChart = view!!.findViewById<BarChart>(R.id.vital_chart)
-        initializeBarChart()
-        setupListAdapter()
+        initializeVitalBarChart()
+        provideDataInVitalBarChart()
     }
 
-    private fun initializeBarChart() {
+    private fun initializeVitalBarChart() {
         severityBarChart.getDescription().setEnabled(false)
 
         severityBarChart.getXAxis().setDrawGridLines(false)
@@ -82,55 +81,46 @@ class VitalDetailsFragment : Fragment() {
         severityBarChart.invalidate()
     }
 
-    private fun setupListAdapter() {
+    private fun provideDataInVitalBarChart() {
+        val vital = args.vital
+        val values = ArrayList<BarEntry>()
 
-        severityBarChart?.let {
+        vital?.let {
+            val xAxisData = vital.dates
+            val yAxisData = vital.values
 
-            val vital = args.vital
-            val values = ArrayList<BarEntry>()
-
-            vital?.let {
-                val xAxisData = vital.dates
-                val yAxisData = vital.values
-
-                for (i in 0 until xAxisData.size) {
-                    val y = yAxisData.get(i).replace(':', '.')
-                    values.add(BarEntry(i.toFloat(), y.toFloat()))
-                }
-
-
-                val set1: BarDataSet;
-
-                if (severityBarChart.getData() != null &&
-                    severityBarChart.getData().getDataSetCount() > 0
-                ) {
-                    set1 = severityBarChart.data.getDataSetByIndex(0) as BarDataSet
-                    set1.setValues(values);
-                    severityBarChart.getData().notifyDataChanged();
-                    severityBarChart.notifyDataSetChanged();
-                } else {
-                    set1 = BarDataSet(values, "Data Set");
-                    //  set1.setColors(SessionManagement.MATERIAL_COLORS);
-                    set1.setDrawValues(true);
-
-                    val dataSets = ArrayList<IBarDataSet>()
-                    dataSets.add(set1);
-
-                    val data = BarData(dataSets);
-                    severityBarChart.setData(data);
-                    //severityBarChart.setVisibleXRange(1f, 4f);
-                    //severityBarChart.setFitBars(true);
-                    val xAxis = severityBarChart.getXAxis();
-                    xAxis.setGranularity(1f);
-                    xAxis.setGranularityEnabled(true);
-                    xAxis.setValueFormatter(IndexAxisValueFormatter(xAxisData));//setting String values in Xaxis
-                    for (set in severityBarChart.data.getDataSets())
-                        set.setDrawValues(!set.isDrawValuesEnabled());
-
-                    severityBarChart.invalidate();
-                }
+            for (i in 0 until xAxisData.size) {
+                val y = yAxisData.get(i).replace(':', '.')
+                values.add(BarEntry(i.toFloat(), y.toFloat()))
             }
 
+            val set1: BarDataSet;
+
+            if (severityBarChart.getData() != null &&
+                severityBarChart.getData().getDataSetCount() > 0
+            ) {
+                set1 = severityBarChart.data.getDataSetByIndex(0) as BarDataSet
+                set1.setValues(values);
+                severityBarChart.getData().notifyDataChanged();
+                severityBarChart.notifyDataSetChanged();
+            } else {
+                set1 = BarDataSet(values, "Data Set");
+                set1.setDrawValues(true);
+
+                val dataSets = ArrayList<IBarDataSet>()
+                dataSets.add(set1);
+
+                val data = BarData(dataSets);
+                severityBarChart.setData(data);
+                val xAxis = severityBarChart.getXAxis();
+                xAxis.setGranularity(1f);
+                xAxis.setGranularityEnabled(true);
+                xAxis.setValueFormatter(IndexAxisValueFormatter(xAxisData));//setting String values in Xaxis
+                for (set in severityBarChart.data.getDataSets())
+                    set.setDrawValues(!set.isDrawValuesEnabled());
+
+                severityBarChart.invalidate();
+            }
         }
     }
 }
