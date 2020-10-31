@@ -6,7 +6,6 @@ import android.view.View;
 import androidx.databinding.DataBinderMapper;
 import androidx.databinding.DataBindingComponent;
 import androidx.databinding.ViewDataBinding;
-import com.android.example.myapplication.databinding.VitalDetailItemBindingImpl;
 import com.android.example.myapplication.databinding.VitalItemBindingImpl;
 import com.android.example.myapplication.databinding.VitalListFragmentBindingImpl;
 import java.lang.IllegalArgumentException;
@@ -20,16 +19,13 @@ import java.util.HashMap;
 import java.util.List;
 
 public class DataBinderMapperImpl extends DataBinderMapper {
-  private static final int LAYOUT_VITALDETAILITEM = 1;
+  private static final int LAYOUT_VITALITEM = 1;
 
-  private static final int LAYOUT_VITALITEM = 2;
+  private static final int LAYOUT_VITALLISTFRAGMENT = 2;
 
-  private static final int LAYOUT_VITALLISTFRAGMENT = 3;
-
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(3);
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(2);
 
   static {
-    INTERNAL_LAYOUT_ID_LOOKUP.put(com.android.example.myapplication.R.layout.vital_detail_item, LAYOUT_VITALDETAILITEM);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.android.example.myapplication.R.layout.vital_item, LAYOUT_VITALITEM);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.android.example.myapplication.R.layout.vital_list_fragment, LAYOUT_VITALLISTFRAGMENT);
   }
@@ -43,12 +39,6 @@ public class DataBinderMapperImpl extends DataBinderMapper {
         throw new RuntimeException("view must have a tag");
       }
       switch(localizedLayoutId) {
-        case  LAYOUT_VITALDETAILITEM: {
-          if ("layout/vital_detail_item_0".equals(tag)) {
-            return new VitalDetailItemBindingImpl(component, view);
-          }
-          throw new IllegalArgumentException("The tag for vital_detail_item is invalid. Received: " + tag);
-        }
         case  LAYOUT_VITALITEM: {
           if ("layout/vital_item_0".equals(tag)) {
             return new VitalItemBindingImpl(component, view);
@@ -106,21 +96,19 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerBrLookup {
-    static final SparseArray<String> sKeys = new SparseArray<String>(4);
+    static final SparseArray<String> sKeys = new SparseArray<String>(3);
 
     static {
       sKeys.put(0, "_all");
-      sKeys.put(1, "album");
-      sKeys.put(2, "viewModel");
-      sKeys.put(3, "vital");
+      sKeys.put(1, "viewModel");
+      sKeys.put(2, "vital");
     }
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(3);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(2);
 
     static {
-      sKeys.put("layout/vital_detail_item_0", com.android.example.myapplication.R.layout.vital_detail_item);
       sKeys.put("layout/vital_item_0", com.android.example.myapplication.R.layout.vital_item);
       sKeys.put("layout/vital_list_fragment_0", com.android.example.myapplication.R.layout.vital_list_fragment);
     }

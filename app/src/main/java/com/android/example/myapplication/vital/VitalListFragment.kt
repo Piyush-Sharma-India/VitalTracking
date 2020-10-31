@@ -55,11 +55,6 @@ class VitalListFragment : Fragment() {
         setupListAdapter()
     }
 
-    private fun navigateToCart() {
-//        val action = AlbumSearchFragmentDirections.actionAlbumSearchFragmentDestToCartFragment()
-//        findNavController().navigate(action)
-    }
-
     private fun setupListAdapter() {
         val viewModel = viewDataBinding.viewModel
         if (viewModel != null) {

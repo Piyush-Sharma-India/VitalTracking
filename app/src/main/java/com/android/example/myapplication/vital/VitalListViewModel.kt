@@ -58,11 +58,5 @@ class VitalListViewModel @Inject constructor(private val repository: VitalReposi
             _dataLoading.value = false
         }
     }
-
-//    fun addToCart(album: Album) {
-//        viewModelScope.launch(Dispatchers.IO) {
-//            //  repository.updateAlbum(album = album)
-//        }
-//    }
 }
 
